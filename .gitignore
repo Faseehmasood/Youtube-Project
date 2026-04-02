@@ -118,3 +118,12 @@ dist
 .pnp.*
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
+
+
+# Temporary images and photos
+*.jfif
+*.jpg
+*.jpeg
+*.png
+*.gif
+Backend/public/temp/*
