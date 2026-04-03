@@ -15,9 +15,6 @@ const VideoPage = () => {
 
     const video = data?.data
 
-    console.log(video);
-    
-
     const handleLike = async () => {
         try {
             await toggleLike(videoId).unwrap()
@@ -29,7 +26,7 @@ const VideoPage = () => {
 
     const handleSubscribe = async () => {
         try {
-            await toggleSubscription(video?.owner).unwrap()
+            await toggleSubscription(video?.owner?._id).unwrap()
             toast.success("Done!")
         } catch (error) {
             toast.error("Login required!")
@@ -72,22 +69,30 @@ const VideoPage = () => {
 
                 {/* Channel Info + Buttons */}
                 <div className="flex items-center justify-between mt-4 pb-4 border-b border-gray-800">
-                  
 
-                  {/* Channel */}
-
-
-                  
+                    {/* Channel */}
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-white font-bold">
-                            {video?.title?.[0]?.toUpperCase()}
-                        </div>
+                        
+                        {/* Avatar */}
+                        {video?.owner?.avatar ? (
+                            <img
+                                src={video.owner.avatar}
+                                alt="avatar"
+                                className="w-10 h-10 rounded-full object-cover"
+                            />
+                        ) : (
+                            <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-white font-bold">
+                                {video?.owner?.username?.[0]?.toUpperCase()}
+                            </div>
+                        )}
+
+                        {/* Name */}
                         <div>
                             <p className="text-white font-semibold">
                                 {video?.owner?.fullName}
                             </p>
                             <p className="text-gray-400 text-sm">
-                                {video?.owner?.username}
+                                @{video?.owner?.username}
                             </p>
                         </div>
                     </div>

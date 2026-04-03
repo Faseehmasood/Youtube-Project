@@ -24,7 +24,7 @@ const VideoCard = ({ video }) => {
                 {/* Info */}
                 <div className="p-3 flex gap-3">
                     {/* Avatar */}
-                    <div className="w-9 h-9 rounded-full bg-red-500 flex-shrink-0 flex items-center justify-center text-white text-sm font-bold">
+                    <div className="w-9 h-9 rounded-full bg-red-500 shrink-0 flex items-center justify-center text-white text-sm font-bold">
                         {video.title[0].toUpperCase()}
                     </div>
 
